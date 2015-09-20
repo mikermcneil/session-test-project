@@ -1,0 +1,23 @@
+<div is="page" data-page="homepage">
+  <h1>Homepage</h1>
+
+  <h2>Status:</h2>
+  <code>
+  <%- JSON.stringify(me) %>
+  </code>
+
+
+
+  <% if (!me) { %>
+
+  <h3>Log in?</h3>
+  <form is="login-form">
+    <input name="username" type="text" placeholder="e.g. cherrybear"/>
+    <br/>
+    <input type="password" placeholder="Type password here"/>
+    <br/>
+    <button type="submit">Log in</button>
+  </form>
+  <% } %>
+
+</div>
