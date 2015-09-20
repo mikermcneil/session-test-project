@@ -51,18 +51,23 @@ module.exports.routes = {
   },
 
   'PUT /login': function (req, res) {
-    User.findOne({
-      username: req.param('username'),
-      password: req.param('password')
-    }).exec(function (err, matchedUser) {
-      if (err) { return res.negotiate(err); }
-      if (!matchedUser) { return res.forbidden('STUFF'); }
 
-      // If we made it here, the provided credentials are valid!
-      // Remember the logged-in user in the session, then respond.
-      req.session.userId = matchedUser.id;
-      return res.json({stuff: 'things'});
-    });
+    // Use a fairly long timeout to simulate a complex route.
+    setTimeout(function (){
+      User.findOne({
+        username: req.param('username'),
+        password: req.param('password')
+      }).exec(function (err, matchedUser) {
+        if (err) { return res.negotiate(err); }
+        if (!matchedUser) { return res.forbidden(); }
+
+        // If we made it here, the provided credentials are valid!
+        // Remember the logged-in user in the session, then respond.
+        req.session.userId = matchedUser.id;
+        return res.json({stuff: 'things'});
+      });
+    }, 750);
+
   }
 
 };

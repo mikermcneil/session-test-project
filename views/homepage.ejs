@@ -8,8 +8,9 @@
 
 
 
-  <% if (!me) { %>
-
+  <%
+  // Only show login UI if not logged in.
+  if (!me) { %>
   <h3>Log in?</h3>
   <form is="login-form">
     <input name="username" type="text" placeholder="e.g. cherrybear"/>
@@ -18,6 +19,11 @@
     <br/>
     <button type="submit">Log in</button>
   </form>
+
+  <blockquote>
+    <h5>Psst!</h5>
+    <p>You can sign in as <code>irlnathan</code> with password <code>abc123</code>.</p>
+  </blockquote>
   <% } %>
 
 </div>
